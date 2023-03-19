@@ -14,10 +14,14 @@ require_once '../src/init.php';
 
     // Selvitetään mitä sivua on kutsuttu ja suoritetaan sivua vastaava
     // käsittelijä.
-    if ($request === '/' || $request === '/koulutustapahtumat') {
-      echo $templates->render('koulutustapahtumat');
-    } else if ($request === '/koulutustapahtuma') {
-      echo $templates->render('koulutustapahtuma');
+    
+    if ($request === '/' || $request === '/tapahtumat') {
+      require_once MODEL_DIR . 'tapahtuma.php';
+      $tapahtumat = haeTapahtumat();
+      echo $templates->render('tapahtumat',['tapahtumat' => $tapahtumat]);
+  } // ... loput ehtolauseesta säilyy sellaisenaan
+  else if ($request === '/tapahtuma') {
+      echo $templates->render('tapahtuma');
     } else {
       echo $templates->render('notfound');
     }

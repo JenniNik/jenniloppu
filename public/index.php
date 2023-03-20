@@ -12,27 +12,26 @@ require_once '../src/init.php';
   $templates = new League\Plates\Engine(TEMPLATE_DIR);
 
 
-    // Selvitetään mitä sivua on kutsuttu ja suoritetaan sivua vastaava
-    // käsittelijä.
+
     
     if ($request === '/' || $request === '/tapahtumat') {
       require_once MODEL_DIR . 'tapahtuma.php';
       $tapahtumat = haeTapahtumat();
       echo $templates->render('tapahtumat',['tapahtumat' => $tapahtumat]);
-  } // ... loput ehtolauseesta säilyy sellaisenaan
-    // ... ehtolauseen alku säilyy sellaisenaan
-   else if ($request === '/tapahtuma') {
-    require_once MODEL_DIR . 'tapahtuma.php';
-    $tapahtuma = haeTapahtuma($_GET['id']);
-    if ($tapahtuma) {
-      echo $templates->render('tapahtuma',['tapahtuma' => $tapahtuma]);
-    } else {
-      echo $templates->render('tapahtumanotfound');
-    }
-  
-    } else {
-      echo $templates->render('notfound');
-    }
-  
+  } 
+   
+        else if ($request === '/tapahtuma') {
+          require_once MODEL_DIR . 'tapahtuma.php';
+          $tapahtuma = haeTapahtuma($_GET['id']);
+          if ($tapahtuma) {
+            echo $templates->render('tapahtuma',['tapahtuma' => $tapahtuma]);
+          } else {
+            echo $templates->render('tapahtumanotfound');
+          }
+        
+          } else {
+            echo $templates->render('notfound');
+          }
+        
 
 ?> 

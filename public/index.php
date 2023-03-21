@@ -48,6 +48,9 @@ require_once '../src/init.php';
         break;
       }
   // ... switch-lauseen loppu säilyy sellaisenaan
+  case '/kirjaudu':
+    echo $templates->render('kirjaudu', [ 'error' => []]);
+    break;
 
     
     default:

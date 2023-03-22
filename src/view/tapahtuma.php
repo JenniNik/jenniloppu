@@ -7,8 +7,9 @@
 
 <h1><?=$tapahtuma['nimi']?></h1>
 <div><?=$tapahtuma['kuvaus']?></div>
-<div>Alkaa: <?=$start->format('j.n.Y G:i')?></div>
-<div>Loppuu: <?=$end->format('j.n.Y G:i')?></div>
+<br><br>
+<div><b>Tapahtuma alkaa: <?=$start->format('j.n.Y G:i')?></b></div>
+<div><b>Tapahtuma loppuu: <?=$end->format('j.n.Y G:i')?></b></div>
 
 <?php
     if ($loggeduser) {

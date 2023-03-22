@@ -24,7 +24,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.8rem;
+    font-size: 1.5rem;
+    
   }
   
   header h1 {
@@ -33,7 +34,7 @@
     margin-left: 0.5rem;
   }
   header a {
-    color: #000;
+    color: rgb(10, 10, 10);
     text-decoration:none;
   }
   section {
@@ -113,4 +114,8 @@ input:hover[type=submit] {
 }
 .button {
   text-decoration: none;
+}
+h4 {
+text-decoration: underline;
+
 }

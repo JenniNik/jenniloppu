@@ -22,4 +22,3 @@
   Jos olet unohtanut salasanasi, niin voit vaihtaa sen <a href="tilaa_vaihtoavain">täällä</a>.
 </div>
 
-?>

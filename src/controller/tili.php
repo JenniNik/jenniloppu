@@ -1,6 +1,20 @@
 <?php
 
-function lisaaTili($formdata) {
+function lisaaTili($formdata, $baseurl='') {
+
+  function lahetaVahvavain($email,$url) {
+    $message = "Hei!\n\n" . 
+               "Rekisteröidyit Junnukoodarit-palveluun tällä\n" . 
+               "sähköpostiosoitteella. Klikkaamalla alla olevaa\n" . 
+               "linkkiä vahvistat käyttämäsi sähköpostiosoitteen\n" .
+               "ja pääset käyttämään Junnukoodarit-palvelua.\n\n" . 
+               "$url\n\n" .
+               "Jos et ole rekisteröitynyt Junnukoodarit palveluun, niin\n" . 
+               "silloin voit jättää tämän viestin huomiotta ja siinä\n" .
+               "tapauksessa voit poistaa tämän viestin.\n\n".  
+               "Terveisin, Junnukoodarit-palvelu";
+    return mail($email,'Junnukoodarit-tilin aktivointilinkki',$message);
+  }
 
   // Tuodaan henkilo-mallin funktiot, joilla voidaan lisätä
   // henkilön tiedot tietokantaan.
@@ -84,13 +98,39 @@ function lisaaTili($formdata) {
     // Jos idhenkilo-muuttujassa on positiivinen arvo,
     // onnistui rivin lisääminen. Muuten liäämisessä ilmeni
     // ongelma.
+       // Tarkistetaan onnistuiko henkilön tietojen lisääminen.
+    // Jos idhenkilo-muuttujassa on positiivinen arvo,
+    // onnistui rivin lisääminen. Muuten liäämisessä ilmeni
+    // ongelma.
     if ($idhenkilo) {
-      return [
-        "status" => 200,
-        "id"     => $idhenkilo,
-        "data"   => $formdata
-      ];
+
+      // Luodaan käyttäjälle aktivointiavain ja muodostetaan
+      // aktivointilinkki.
+      require_once(HELPERS_DIR . "secret.php");
+      $avain = generateActivationCode($email);
+      $url = 'https://' . $_SERVER['HTTP_HOST'] . $baseurl . "/vahvista?key=$avain";
+
+      // Päivitetään aktivointiavain tietokantaan ja lähetetään
+      // käyttäjälle sähköpostia. Jos tämä onnistui, niin palautetaan
+      // palautusarvona tieto tilin onnistuneesta luomisesta. Muuten
+      // palautetaan virhekoodi, joka ilmoittaa, että jokin
+      // lisäyksessä epäonnistui.
+      if (paivitaVahvavain($email,$avain) && lahetaVahvavain($email,$url)) {
+        return [
+          "status" => 200,
+          "id"     => $idhenkilo,
+          "data"   => $formdata
+        ];
+      } else {
+        return [
+          "status" => 500,
+          "data"   => $formdata
+        ];
+      }
     } else {
+
+
+
       return [
         "status" => 500,
         "data"   => $formdata

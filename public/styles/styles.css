@@ -119,3 +119,33 @@ h4 {
 text-decoration: underline;
 
 }
+
+li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size:25px;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color:rgb(112, 106, 106);
+  }
+
+li {
+float:left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  }
+
+li a:hover {
+  background-color: rgb(211, 34, 173);
+  }

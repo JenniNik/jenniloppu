@@ -21,16 +21,17 @@
       
     </header>
     <div>
-    <nav>
+      <nav>
                 <ul>
                         <li><a href="etusivunäyttö.php">Etusivu</a></li>
-                        <li><a href="tapahtumakalenteri.php">Tapahtumakalenteri</a></li>
+                        <li><a href="ryhmät.html">Tapahtumakalenteri</a></li>
                         <li><a href="yhteystiedot.html">Avoimet työpaikat</a></li>
                         <li><a href="Koodarin_ABC.php">Koodarin ABC</a></li>
                         <li><a href="Verkostoidu.html">Verkostoidu</a></li>
                         <li><a href="Linkkipankki.html">Linkkipankki</a></li>
                 </ul>
    </nav>
+
         
     <section>
       <?=$this->section('content')?>
@@ -42,3 +43,6 @@
         </div>
   </body>
 </html>
+
+
+

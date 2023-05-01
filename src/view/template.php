@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="fi">
   <head>
-    <title>Junnukoodarit - koulutuskalenteri - <?=$this->e($title)?></title>
-    <meta charset="UTF-8">   
+    <title>Junnukoodarit - Tapahtumat ja verkostot - <?=$this->e($title)?></title>
+    <meta charset="UTF-8">  
     <link href="styles/styles.css" rel="stylesheet"> 
   </head>
   <body>
     <div>
     <header>
-    <h1><a href="<?=BASEURL?>">Junnukoodarit - Tapahtumakalenteri</a></h1>
+    <h1><a href="<?=BASEURL?>">Junnukoodarit - Tapahtumat ja verkostot</a></h1>
     <div class="profile">
         <?php
           if (isset($_SESSION['user'])) {
@@ -22,16 +22,19 @@
     </header>
     <div>
     <nav>
-                <ul>
-                        <li><a href="etusivunäyttö.php">Etusivu</a></li>
-                        <li><a href="tapahtumakalenteri.php">Tapahtumakalenteri</a></li>
-                        <li><a href="yhteystiedot.html">Avoimet työpaikat</a></li>
-                        <li><a href="Koodarin_ABC.php">Koodarin ABC</a></li>
-                        <li><a href="Verkostoidu.html">Verkostoidu</a></li>
-                        <li><a href="Linkkipankki.html">Linkkipankki</a></li>
-                </ul>
+      
+            <ul>
+                <li><a href="<?=BASEURL . "/yhteystiedot" ?>">YHTEYSTIEDOT</a></li>
+                <li><a href="<?=BASEURL . "/verkostoidu"  ?>">VERKOSTOIDU</a></li>
+                <li><a href="<?=BASEURL . "/koodarin_ABC" ?>">KOODAAMISEN ABC</a></li>    
+                <li><a href="<?=BASEURL . "/vihreakoodaus"?>">VIHREÄ KOODAUS</a></li>        
+                <li><a href="<?=BASEURL . "/kuvagalleria" ?>">KUVAGALLERIA</a></li> 
+            </ul>
+
+                
    </nav>
-        
+   <div class="kuvaetu">
+   <img src='images/kuva5.jpg'>;
     <section>
       <?=$this->section('content')?>
     </section>

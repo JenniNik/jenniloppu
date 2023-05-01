@@ -76,30 +76,30 @@
       break;
     case '/lisaa_tili':
       if (isset($_POST['laheta'])) {
-        $formdata = cleanArrayData($_POST);
-        require_once CONTROLLER_DIR . 'tili.php';
-        $tulos = lisaaTili($formdata,$config['urls']['baseUrl']);
-        if ($tulos['status'] == "200") {
-          echo $templates->render('tili_luotu', ['formdata' => $formdata]);
+          $formdata = cleanArrayData($_POST);
+          require_once CONTROLLER_DIR . 'tili.php';
+          $tulos = lisaaTili($formdata,$config['urls']['baseUrl']);
+          if ($tulos['status'] == "200") {
+            echo $templates->render('tili_luotu', ['formdata' => $formdata]);
+            break;
+          }
+          echo $templates->render('lisaa_tili', ['formdata' => $formdata, 'error' => $tulos['error']]);
           break;
-        }
-        echo $templates->render('lisaa_tili', ['formdata' => $formdata, 'error' => $tulos['error']]);
-        break;
-      } else {
-        echo $templates->render('lisaa_tili', ['formdata' => [], 'error' => []]);
-        break;
+        } else {
+          echo $templates->render('lisaa_tili', ['formdata' => [], 'error' => []]);
+          break;
       }
     case "/vahvista":
       if (isset($_GET['key'])) {
-        $key = $_GET['key'];
-        require_once MODEL_DIR . 'henkilo.php';
-        if (vahvistaTili($key)) {
-          echo $templates->render('tili_aktivoitu');
+          $key = $_GET['key'];
+          require_once MODEL_DIR . 'henkilo.php';
+          if (vahvistaTili($key)) {
+            echo $templates->render('tili_aktivoitu');
+          } else {
+            echo $templates->render('tili_aktivointi_virhe');
+          }
         } else {
-          echo $templates->render('tili_aktivointi_virhe');
-        }
-      } else {
-        header("Location: " . $config['urls']['baseUrl']);
+          header("Location: " . $config['urls']['baseUrl']);
       }
       break;
     case "/kirjaudu":
@@ -122,11 +122,54 @@
         echo $templates->render('kirjaudu', [ 'error' => []]);
       }
       break;
+
+
+
+      case "/yhteystiedot":
+
+        echo $templates->render('yhteystiedot');
+       
+       break;
+
+                    case "/verkostoidu":
+
+                      echo $templates->render('verkostoidu');
+                    
+                    break;
+
+       case "/koodarin_ABC":
+
+        echo $templates->render('koodarin_ABC');
+       
+       break;
+
+                    //case "/vihreakoodaus":
+
+                      //require_once MODEL_DIR . 'vihreakoodaus.php';
+                    
+                    //break;
+
+      case "/kuvagalleria":
+
+        echo $templates->render('kuvagalleria');
+                    
+      break;
+
+      case '/vihreakoodaus':
+
+         echo $templates->render('vihreakoodaus');
+        
+        break;
+ 
+ 
+ 
     case "/logout":
       require_once CONTROLLER_DIR . 'kirjaudu.php';
       logout();
       header("Location: " . $config['urls']['baseUrl']);
       break;
+
+
     case "/tilaa_vaihtoavain":
       $formdata = cleanArrayData($_POST);
       // Tarkistetaan, onko lomakkeelta lähetetty tietoa.
@@ -202,7 +245,7 @@
         echo $templates->render('reset_lomake', ['error' => '']);
         break;
       }
-
+      
       break;
     default:
       echo $templates->render('notfound');

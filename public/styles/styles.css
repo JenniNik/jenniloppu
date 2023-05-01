@@ -28,6 +28,7 @@
     
   }
   
+  
   header h1 {
     font-size: 4rem;
     font-weight: normal;
@@ -125,6 +126,7 @@ li {
   flex-direction: column;
   align-items: flex-start;
   font-size:25px;
+  float:left;
 }
 ul {
   list-style-type: none;
@@ -134,9 +136,7 @@ ul {
   background-color:rgb(112, 106, 106);
   }
 
-li {
-float:left;
-}
+
 
 li a {
   display: block;
@@ -149,3 +149,27 @@ li a {
 li a:hover {
   background-color: rgb(211, 34, 173);
   }
+
+  .kuvaetu img {
+    width: 960px;
+    margin:0em;
+    height: 300px;
+    
+    
+  }
+
+
+.kuvagalleria1 img{
+
+width: 750px;
+margin: 2em;
+  
+}
+
+.linkit ul li {
+ 
+  color:#df1986;
+  list-style-type: disc;
+  background-color: none;
+  text-decoration: none;
+}

@@ -2,8 +2,9 @@
 
 <h1>Tulevia tapahtumia ja koulutuksia</h1>
 
-<h4>Katso kaikki tulevat tapahtumat yllä olevasta valikosta</h4>
+
 <br><br>
+<div class="kuva">
 <div class='tapahtumat'>
 <?php
 
@@ -19,6 +20,7 @@ foreach ($tapahtumat as $tapahtuma) {
   echo "</div>";
   echo "<br><br>";
   echo "<HR NOSHADE>";
+ 
 
 }
 
